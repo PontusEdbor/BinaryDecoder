@@ -5,4 +5,5 @@
     <string name="ascii">ASCII</string>
     <string name="decode">Decode</string>
     <string name="input_to_be_encoded">Input to be encoded</string>
+    <string name="BadFormatInput">Bad format of input(Not divisible by 8)</string>
 </resources>

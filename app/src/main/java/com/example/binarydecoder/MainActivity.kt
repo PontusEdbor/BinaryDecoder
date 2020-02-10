@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val decoder = Decoder()
         val encoder = Encoder()
         val binaryTV = findViewById(R.id.BinaryInput) as TextView
@@ -29,6 +31,12 @@ class MainActivity : AppCompatActivity() {
         val decodeAsciiButton = findViewById(R.id.decodeASCIIButton) as Button
         decodeAsciiButton.setOnClickListener{
             filterBinaryInput(decoder)
+            if (decoder.isFactorOfEight(binaryTV.text.toString())){
+                Toast.makeText(this, getString(R.string.BadFormatInput), Toast.LENGTH_LONG).show()
+            }
+            else {
+                //TODO
+            }
         }
         val encodeAsciiButton = findViewById(R.id.encodeASCIIButton) as Button
         encodeAsciiButton.setOnClickListener{
