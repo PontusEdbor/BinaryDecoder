@@ -18,9 +18,15 @@ class MainActivity : AppCompatActivity() {
         val decodeButton = findViewById(R.id.button5) as Button
         decodeButton.setOnClickListener{
             val testInput = startTV.text.toString()
-            translatedTV.text = decoder.filter(testInput)
+            val filteredInput = decoder.filter(testInput)
+            //First filter the input
+            startTV.text = filteredInput
             //Here we take what is in the upper textfield and translate it and set the lower field to the answer
+            translatedTV.text = decoder.decode(filteredInput)
         }
+        val encodeButton = findViewById(R.id.button6) as Button
+        encodeButton.setOnClickListener{
 
+        }
     }
 }
