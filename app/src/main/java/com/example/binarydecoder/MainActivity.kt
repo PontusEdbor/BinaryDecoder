@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val decoder = Decoder()
+        val encoder = Encoder()
         val startTV = findViewById(R.id.editText4) as TextView
         val translatedTV = findViewById(R.id.editText5) as TextView
 
@@ -26,7 +27,9 @@ class MainActivity : AppCompatActivity() {
         }
         val encodeButton = findViewById(R.id.button6) as Button
         encodeButton.setOnClickListener{
-
+            val testInput = translatedTV.text.toString()
+            val filteredInput = encoder.filter(testInput)
+            startTV.text = encoder.encode(filteredInput)
         }
     }
 }
