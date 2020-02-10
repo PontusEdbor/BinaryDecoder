@@ -12,24 +12,37 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val decoder = Decoder()
         val encoder = Encoder()
-        val startTV = findViewById(R.id.editText4) as TextView
-        val translatedTV = findViewById(R.id.editText5) as TextView
+        val binaryTV = findViewById(R.id.BinaryInput) as TextView
+        val decimalTV = findViewById(R.id.DecimalInput) as TextView
 
 
-        val decodeButton = findViewById(R.id.button5) as Button
+        val decodeButton = findViewById(R.id.decodeButton) as Button
         decodeButton.setOnClickListener{
-            val testInput = startTV.text.toString()
-            val filteredInput = decoder.filter(testInput)
-            //First filter the input
-            startTV.text = filteredInput
-            //Here we take what is in the upper textfield and translate it and set the lower field to the answer
-            translatedTV.text = decoder.decode(filteredInput)
+            filterBinaryInput(decoder)
+            decimalTV.text = decoder.decode(binaryTV.text.toString())
         }
-        val encodeButton = findViewById(R.id.button6) as Button
+        val encodeButton = findViewById(R.id.encodeButton) as Button
         encodeButton.setOnClickListener{
-            val testInput = translatedTV.text.toString()
-            val filteredInput = encoder.filter(testInput)
-            startTV.text = encoder.encode(filteredInput)
+            filterDecimalInput(encoder)
+            binaryTV.text = encoder.encode(decimalTV.text.toString())
         }
+        val decodeAsciiButton = findViewById(R.id.decodeASCIIButton) as Button
+        decodeAsciiButton.setOnClickListener{
+            filterBinaryInput(decoder)
+        }
+        val encodeAsciiButton = findViewById(R.id.encodeASCIIButton) as Button
+        encodeAsciiButton.setOnClickListener{
+            filterDecimalInput(encoder)
+        }
+    }
+    fun filterBinaryInput(decoder: Decoder){
+        val binaryTV = findViewById(R.id.BinaryInput) as TextView
+        val binaryInput = binaryTV.text.toString()
+        binaryTV.text = decoder.filter(binaryInput)//First filter the input
+    }
+    fun filterDecimalInput(encoder: Encoder){
+        val decimalTV = findViewById(R.id.DecimalInput) as TextView
+        val decimalInput = decimalTV.text.toString()
+        decimalTV.text = encoder.filter(decimalInput)
     }
 }
