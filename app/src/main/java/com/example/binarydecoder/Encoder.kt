@@ -23,7 +23,6 @@ class Encoder {
                 iterator /= 2
                 value += "1"
             }
-
         }
         return value
     }
