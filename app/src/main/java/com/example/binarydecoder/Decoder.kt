@@ -16,7 +16,7 @@ class Decoder {
     fun filter(input: String): String{
         return input.filter { e -> isOneOrZero(e) }
     }
-    fun isOneOrZero(input: Char): Boolean {
+    private fun isOneOrZero(input: Char): Boolean {
         if (input == '1' || input == '0'){
             return true
         }
