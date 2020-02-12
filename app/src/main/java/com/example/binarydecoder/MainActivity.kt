@@ -26,21 +26,25 @@ class MainActivity : AppCompatActivity() {
         val encodeButton = findViewById(R.id.encodeButton) as Button
         encodeButton.setOnClickListener{
             filterDecimalInput(encoder)
-            binaryTV.text = encoder.encode(decimalTV.text.toString())
+            val encodingString = decimalTV.text.toString()
+            if (encodingString != ""){
+                binaryTV.text = encoder.encode(encodingString)
+            }
         }
         val decodeAsciiButton = findViewById(R.id.decodeASCIIButton) as Button
         decodeAsciiButton.setOnClickListener{
             filterBinaryInput(decoder)
-            if (decoder.isFactorOfEight(binaryTV.text.toString())){
+            if (!decoder.isFactorOfEight(binaryTV.text.toString())){
                 Toast.makeText(this, getString(R.string.BadFormatInput), Toast.LENGTH_LONG).show()
+                println(binaryTV.text.toString().length % 8)
             }
             else {
-                //TODO
+                decimalTV.text = decoder.toAscii(binaryTV.text.toString())
             }
         }
         val encodeAsciiButton = findViewById(R.id.encodeASCIIButton) as Button
         encodeAsciiButton.setOnClickListener{
-            filterDecimalInput(encoder)
+            binaryTV.text = encoder.toAscii(decimalTV.text.toString())
         }
     }
     fun filterBinaryInput(decoder: Decoder){

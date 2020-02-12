@@ -28,11 +28,18 @@ class Decoder {
         }
         return false
     }
-    fun toAscii(input: String){
+    fun toAscii(input: String): String {
+        var resultString = ""
         //Divide into chunks of 8
+        val chunkedInput = input.chunked(8)
         //Decode to int
-        //translate to ASCII
-        //Add to string
-        //Send to textView
+        for (chunk in chunkedInput){
+            //translate to ASCII
+            resultString += decode(chunk).toInt().toChar()
+            //Add to string
+        }
+
+        //return String
+        return resultString
     }
 }
