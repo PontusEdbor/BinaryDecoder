@@ -9,9 +9,9 @@ import org.junit.Assert.*
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class ExampleUnitTest {
+class DencodingTests {
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun spaceDecodesCorrect() {//Space should be ascii code 32
+        assertEquals(" ", Decoder().toAscii("00100000"))
     }
 }

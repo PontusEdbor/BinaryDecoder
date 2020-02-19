@@ -14,7 +14,7 @@ class Encoder {
         var sum = input.toInt()
         var iterator = 1
         var value = ""
-        while (iterator*2 < sum){
+        while (iterator*2 <= sum){
             iterator *= 2
         }
         while (iterator > 0){
@@ -33,7 +33,8 @@ class Encoder {
     fun toAscii(input: String):String{
         var returnString = ""
         for (character in input){
-            returnString += encode(character.toInt().toString()).padStart(8,'0')
+            val tempValue = character.toInt().toString() //Takes char end turns it into a string of the ascii value Ex: a -> 97 -> "97"
+            returnString += encode(tempValue).padStart(8,'0')
         }
         return returnString
     }
