@@ -14,4 +14,8 @@ class DencodingTests {
     fun spaceDecodesCorrect() {//Space should be ascii code 32
         assertEquals(" ", Decoder().toAscii("00100000"))
     }
+    @Test
+    fun newlineDecodesCorrect(){
+        assertEquals("\n",Decoder().toAscii("00001010"))
+    }
 }

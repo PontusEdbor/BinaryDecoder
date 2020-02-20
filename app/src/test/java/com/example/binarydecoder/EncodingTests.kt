@@ -19,6 +19,10 @@ class EncodingTests {
         assertEquals("01100001", Encoder().toAscii("a"))
     }
     @Test
+    fun newlineEncodesCorrect(){
+        assertEquals("00001010", Encoder().toAscii("\n"))
+    }
+    @Test
     fun whatIsToChar(){
         assertEquals(32,' '.toInt())
     }
